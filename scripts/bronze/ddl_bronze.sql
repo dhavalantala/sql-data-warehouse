@@ -38,22 +38,22 @@ CREATE TABLE crm_prd_info (
 -- CRM: Sales Details
 DROP TABLE IF EXISTS crm_sales_details;
 CREATE TABLE crm_sales_details (
-    sls_ord_num  VARCHAR(50),
-    sls_prd_key  VARCHAR(50),
-    sls_cust_id  INT,
-    sls_order_dt DATE,
-    sls_ship_dt  DATE,
-    sls_due_dt   DATE,
-    sls_sales    DECIMAL(10,2),
-    sls_quantity INT,
-    sls_price    DECIMAL(10,2)
+    sls_ord_num  VARCHAR(50),                    -- Order number
+    sls_prd_key  VARCHAR(50) NOT NULL,           -- Product key (references crm_prd_info.prd_key)
+    sls_cust_id  INT NOT NULL,                   -- Customer ID (references crm_cust_info.cst_id)
+    sls_order_dt DATE NOT NULL,                   -- Order date (YYYY-MM-DD)
+    sls_ship_dt  DATE,                           -- Ship date (YYYY-MM-DD), allows NULL
+    sls_due_dt   DATE,                           -- Due date (YYYY-MM-DD), allows NULL
+    sls_sales    DECIMAL(10,2) NOT NULL,         -- Sales amount
+    sls_quantity INT NOT NULL,                    -- Quantity (positive)
+    sls_price    DECIMAL(10,2) NOT NULL
 );
 
 -- ERP: Location
 DROP TABLE IF EXISTS erp_loc_a101;
 CREATE TABLE erp_loc_a101 (
     cid   VARCHAR(50),
-    cntry VARCHAR(50)
+    cntry VARCHAR(50) NOT NULL
 );
 
 -- ERP: Customer
