@@ -29,7 +29,7 @@ CREATE TABLE crm_prd_info (
     prd_id       INT,
     prd_key      VARCHAR(50),
     prd_nm       VARCHAR(50),
-    prd_cost     INT,
+    prd_cost     INT NULL,
     prd_line     VARCHAR(50),
     prd_start_dt DATETIME,
     prd_end_dt   DATETIME
